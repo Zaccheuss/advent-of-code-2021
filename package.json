@@ -4,9 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "author": "",
   "license": "ISC",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.16.5",
+    "jest": "^27.4.5"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "node_modules/(?!@atlaskit)"
+    ],
+    "transform": {},
+    "testEnvironment": "jest-environment-node"
+  }
 }
