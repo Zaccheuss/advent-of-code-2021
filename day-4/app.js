@@ -30,7 +30,10 @@ function part1(bingoNumbers, boards) {
       if (checkIfBingo(board)) {
         console.log("called number:", calledNumber)
         console.log("part 1 score:", calculateScore(board, calledNumber));
-        return;
+        boards = boards.filter(x => !isArrayEqual(x, board))
+        if (boards.length === 1) {
+          console.log("part 2 score:", calculateScore(board, calledNumber))
+        }
       }
     }
   }
