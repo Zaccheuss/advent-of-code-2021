@@ -1,10 +1,10 @@
 import { inputFile } from "../util/file-reader.js";
 
 export function run() {
-  const rawInput = inputFile("day-5/test-input.txt");
+  const rawInput = inputFile("day-5/input.txt");
   const formattedInput = rawInput.map(x => x.split(" -> ").map(y => y.split(",").map(Number)));
 
-  const matrix = [...Array(10)].map(x => Array(10).fill(0));
+  const matrix = [...Array(1000)].map(x => Array(1000).fill(0));
 
   const lineArray = [];
 
@@ -14,7 +14,6 @@ export function run() {
       lineArray.push(line);
     }
   })
-  console.log(lineArray)
 
   console.time("lines");
   lineArray.forEach((line) => {
@@ -74,7 +73,19 @@ function createLine(startPoint, endPoint) {
       outputArray.push([x, line[0][1]]);
     }
   } else {
-    return null;
+    // diagonal line
+    const startX = line[0][0]; 
+    const endX = line[1][0];
+    const startY = line[0][1];
+    const endY = line[1][1];
+
+    const increasingX = line[0][0] - line[1][0] < 0;
+    const increasingY = line[0][1] - line[1][1] < 0;
+
+    let x, y;
+    for (x = startX, y = startY; increasingX ? x <= endX : x >= endX; increasingX ? x++ : x--, increasingY ? y++: y--) {
+      outputArray.push([x, y]);
+    }
   }
 
   return outputArray;
