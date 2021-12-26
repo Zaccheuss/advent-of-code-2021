@@ -1,3 +1,3 @@
-import { run } from "./day-5/app.js"
+import { run } from "./day-6/app.js"
 
 run();
