@@ -19,5 +19,8 @@
     ],
     "transform": {},
     "testEnvironment": "jest-environment-node"
+  },
+  "dependencies": {
+    "jest-cli": "^27.4.5"
   }
 }
